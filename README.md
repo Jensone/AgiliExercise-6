@@ -1,6 +1,5 @@
-# AgiliExercice-6
+# AgiliExercice 6
 Pour mes étudiant(e) en PHP
-
 
 ---
 
