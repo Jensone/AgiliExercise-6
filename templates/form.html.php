@@ -1,7 +1,6 @@
 <?php
 
-// Formulaire de création d'un livre
-// Path: templates/form.html.php
+// Formulaires d'exemple
 
 ?>
 

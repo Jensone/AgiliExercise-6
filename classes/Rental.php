@@ -76,30 +76,8 @@ class Rental extends Book
         $statement->execute();
     }
 
-    // Récupérer tous les livres : méthode getBooks()
-    public static function getAll()
-    {
-        // Initialisation de la connexion
-        $pdo = connect();
-
-        // Préparation de la requête
-        $sql = "SELECT rentals.start_date, rentals.end_date, books.title AS book_title, clients.firstname AS client_firstname "
-        . "FROM rentals "
-        . "INNER JOIN books ON rentals.book_id = books.id "
-        . "INNER JOIN clients ON rentals.client_id = clients.id";
-        
-        $statement = $pdo->prepare($sql);
-
-        // Exécution de la requête
-        $statement->execute();
-
-        // Récupération des données
-        $rentals = $statement->fetchAll();
-
-        // Retour des données
-        return $rentals;
-
-
-    }
+    // Récupérer tous les emprunts
+    
+    
 }
 

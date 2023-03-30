@@ -1,14 +1,5 @@
 <?php
-
-// Racine de l'application
-/**
- * Cette application est une application de gestion de stock de livre de bibliothèque appelé "BiblioApp"
- * Fonctionnalités:
- * 1- Gestion des livres (ajout, modification, suppression, recherche)
- * 2- Gestion des emprunts (ajout, modification, suppression)
- */
-
- // Chargement des fichiers nécessaires
+// Chargement des fichiers nécessaires
 require_once('./classes/Book.php');
 
 ?>
