@@ -1,4 +1,5 @@
 # Requête SQL pour la création de la base de données
+# Ajouter la ligne pour l'UTF-8
 
 CREATE DATABASE BiblioApp;
 

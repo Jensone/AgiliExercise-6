@@ -6,9 +6,9 @@
  */
 
 // Chargement des fichiers nécessaires
-require_once('./config/connect.php');
+require_once('./config/models/Base.php');
 
-class Book
+class Book extends Base
 {
     // Propriétés (attributs, variables)
     public $isbn;
@@ -136,9 +136,26 @@ class Book
 
 
     // Récupérer un livre : méthode getBook()
-    public function getBook()
+    public static function getBook($id)
     {
-        return $this->isbn;
+        // Initialisation de la connexion
+        $pdo = connect();
+
+        // Préparation de la requête
+        $sql = 'SELECT * FROM books WHERE id = :id';
+        $statement = $pdo->prepare($sql);
+
+        // Liaison des paramètres
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+
+        // Exécution de la requête
+        $statement->execute();
+
+        // Récupération des données
+        $book = $statement->fetch(PDO::FETCH_ASSOC);
+
+        // Retour des données
+        return $book;
     }
 
     // Récupérer tous les livres : méthode getBooks()
@@ -159,5 +176,6 @@ class Book
 
         // Retour des données
         return $books;
+
     }
 }

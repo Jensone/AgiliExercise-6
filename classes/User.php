@@ -6,9 +6,9 @@
  */
 
 // Chargement des fichiers nécessaires
-require_once('./config/connect.php');
+require_once('./config/models/Base.php');
 
-class User
+class User extends Base
 {
     // Propriétés (attributs, variables)
     public $lastname;
