@@ -127,5 +127,31 @@ class Rental extends Book
         return $clients;
 
     }
+
+    public static function getClientId($client_name)
+    {
+        $client_name = str_word_count($client_name, 1, 'àáãäôç-');
+
+        // Initialisation de la connexion
+        $pdo = connect();
+
+        // Utilisation de ? pour indiquer que la donnée sera donnée lors du statement (liaison des paramètres)
+        $sql = 'SELECT id FROM clients WHERE lastname = ? AND firstname = ?';
+        $statement = $pdo->prepare($sql);
+
+        // Liaison des paramètres
+        $statement->bindValue(1, $client_name[0]);
+        $statement->bindValue(2, $client_name[1]);
+
+        // Exécution de la requête
+        $statement->execute();
+
+        // Récupération des données
+        $client_id = $statement->fetchColumn();
+
+        // Retour des données
+        return $client_id;
+    }
+
 }
 
