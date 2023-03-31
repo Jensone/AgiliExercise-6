@@ -6,17 +6,20 @@ require_once('./classes/Rental.php');
 
 if(isset($_POST['emprunter'])) {
 
-    $idBook = $_POST['book_id'];
-    $idClient = Rental::getClientId($_POST['client_id']);
-    $startDate = $_POST['start_date'];
-    $endDate = $_POST['end_date'];
+    $idBook = (int) $_POST['book_id'];
+    $idClient = (int) Rental::getClientId($_POST['client_id']);
+    $startDate = (string) $_POST['start_date'];
+    $endDate = (string) $_POST['end_date'];
 
-    var_dump($idBook, $idClient, $startDate, $endDate);
+    // var_dump($idBook, $idClient, $startDate, $endDate);
 
     // Méthode add de la classe Rental
     $add = Rental::add($idBook, $idClient, $startDate, $endDate);
 
-    // include './templates/confirm.html.php';
+    // Page de confirmation
+    include './templates/header.html.php';
+    include './templates/confirm.html.php';
+    include './templates/footer.html.php';
 
 } else {
     echo 'Une erreur s\'est produite ! Merci de réessayer.';

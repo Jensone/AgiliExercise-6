@@ -137,6 +137,7 @@ class Rental extends Book
 
         // Utilisation de ? pour indiquer que la donnée sera donnée lors du statement (liaison des paramètres)
         $sql = 'SELECT id FROM clients WHERE lastname = ? AND firstname = ?';
+        
         $statement = $pdo->prepare($sql);
 
         // Liaison des paramètres

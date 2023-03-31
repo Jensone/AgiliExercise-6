@@ -10,7 +10,10 @@ require_once('./classes/Rental.php');
     <form action="./add-rental.php" method="post">
 
         <!-- Information cachée, envoyant l'identifiant du livre -->
-        <input type="hidden" name="book_id" value="<?= $_GET['id'] ?>">
+        <input type="hidden" name="book_id" value="<?= $_GET['id']; ?>">
+
+        <!-- Information cachée, envoyant le titre du livre -->
+        <input type="hidden" name="book_title" value="<?= $book['title']; ?>">
 
         <!-- Information de la personne qui emprunte -->
         <label for="client_name">Qui emprunte ?</label>
