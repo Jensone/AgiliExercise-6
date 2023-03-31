@@ -1,6 +1,15 @@
 <?php
 // Chargement des fichiers nécessaire
+require_once('./classes/Rental.php');
+
 include './templates/header.html.php';
+
+
+// Ajouter à la main un emprunt
+$livre = Rental::add(34, 5, '2023-01-01', '2023-03-21');
+
+
+
 ?>
 
 <main>

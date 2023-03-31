@@ -1,27 +1,38 @@
 <?php
 
-// Formulaire de création d'un livre
-// Path: templates/form.html.php
+// Formulaire d'ajout d'emprunt
+
+require_once('./classes/Rental.php');
 
 ?>
 
 <?php if (isset($_GET['id'])) : ?>
-    <form action="update.php" method="post">
+    <form action="" method="post">
         <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
-        <label for="title">Nom du livre</label>
-        <input type="text" name="title" value="<?= $book['title'] ?>">
-        <label for="author">Auteur</label>
-        <input type="text" name="author" value="<?= $book['author'] ?>">
-        <label for="stock">Stock actuel</label>
-        <input type="number" name="number" value="<?= $book['stock'] ?>">
-        <input type="submit" value="Modifier">
-    </form>
-<?php else : ?>
-    <form action="create.php" method="post">
-        <input type="number" name="isbn" placeholder="ISBN">
-        <input type="text" name="title" placeholder="Titre">
-        <input type="text" name="author" placeholder="Auteur">
-        <input type="number" name="stock" placeholder="Stock">
-        <input type="submit" value="Ajouter">
+
+        <label for="client_name">Qui emprunte ?</label>
+        <select name="text" id="client_name">
+            <?php
+                $clients = Rental::getClients();
+                foreach($clients as $client) :
+            ?>
+                <option>
+                    <?php
+                     echo $client['lastname'] . ' ' . $client['firstname'];
+                     $client_id = $client['id'];
+                     ?>
+                </option>  
+            <?php endforeach ?>
+            ?>
+        </select>
+
+        <label for="start_date">Date d'emprunt</label>
+        <input type="date" placeholder="2022-01-21">
+
+        <label for="start_date">Date de retour</label>
+        <input type="date" placeholder="2022-02-21">
+
+
+        <input type="submit" value="Emprunter">
     </form>
 <?php endif; ?>

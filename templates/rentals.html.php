@@ -2,7 +2,7 @@
 
 require_once('./classes/Rental.php');
 
-$rentals = Rental::getAll();
+$rentals = Rental::getRentals();
 
 // Affichage des emprunts
 foreach($rentals as $rental) : ?>
@@ -12,7 +12,7 @@ foreach($rentals as $rental) : ?>
         <?= $rental['book_title'] ?>
     </td>
     <td>
-        <?= $rental['client_firstname'] ?>
+        <?= $rental['client_firstname'] . ' ' . $rental['client_lastname']?>
     </td>
     <td>
         <?= $rental['start_date'] ?>

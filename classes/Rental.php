@@ -77,16 +77,21 @@ class Rental extends Book
     }
 
     // Récupérer tous les livres : méthode getBooks()
-    public static function getAll()
+    public static function getRentals()
     {
         // Initialisation de la connexion
         $pdo = connect();
 
         // Préparation de la requête
-        $sql = "SELECT rentals.start_date, rentals.end_date, books.title AS book_title, clients.firstname AS client_firstname "
-        . "FROM rentals "
-        . "INNER JOIN books ON rentals.book_id = books.id "
-        . "INNER JOIN clients ON rentals.client_id = clients.id";
+        $sql = 'SELECT 
+        rentals.start_date, 
+        rentals.end_date, 
+        books.title AS book_title, 
+        clients.lastname AS client_lastname, 
+        clients.firstname AS client_firstname 
+        FROM rentals 
+        INNER JOIN books ON rentals.book_id = books.id 
+        INNER JOIN clients ON rentals.client_id = clients.id';
         
         $statement = $pdo->prepare($sql);
 
@@ -99,6 +104,27 @@ class Rental extends Book
         // Retour des données
         return $rentals;
 
+
+    }
+
+    // Récupérer tous les clients : méthode getClients()
+    public static function getClients()
+    {
+        // Initialisation de la connexion
+        $pdo = connect();
+
+        // Préparation de la requête
+        $sql = 'SELECT * FROM clients ORDER BY lastname ASC';
+        $statement = $pdo->prepare($sql);
+
+        // Exécution de la requête
+        $statement->execute();
+
+        // Récupération des données
+        $clients = $statement->fetchAll();
+
+        // Retour des données
+        return $clients;
 
     }
 }

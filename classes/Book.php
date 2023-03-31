@@ -165,7 +165,7 @@ class Book extends Base
         $pdo = connect();
 
         // Préparation de la requête
-        $sql = 'SELECT * FROM books';
+        $sql = 'SELECT * FROM books ORDER BY title ASC';
         $statement = $pdo->prepare($sql);
 
         // Exécution de la requête
